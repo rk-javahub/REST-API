@@ -8,7 +8,7 @@ public interface UserService {
 
 	public List<User> findAll();
 
-	public User save();
+	public User save(User user);
 
 	public User findOne(User user);
 
