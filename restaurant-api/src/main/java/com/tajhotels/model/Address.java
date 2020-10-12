@@ -1,6 +1,6 @@
 package com.tajhotels.model;
 
-import java.util.Set;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +23,7 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer addressId;
+	private String streetName;
 	private String city;
 	private long zipcode;
 	private String state;
