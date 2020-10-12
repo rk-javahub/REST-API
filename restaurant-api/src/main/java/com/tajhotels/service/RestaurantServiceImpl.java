@@ -5,12 +5,15 @@ package com.tajhotels.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.tajhotels.model.Restaurant;
 
 /**
  * @author Rohit
  *
  */
+@Service
 public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
