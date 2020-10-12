@@ -1,11 +1,8 @@
 package com.chirpn.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.NaturalId;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,11 +12,8 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Contact {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "contact_id")
-	private Long id;
-	private String mobilNo;
+	@NaturalId
+	private String mobileNo;
 	private String address_line_1;
 	private String address_line_2;
 	@OneToOne(mappedBy = "contact")
