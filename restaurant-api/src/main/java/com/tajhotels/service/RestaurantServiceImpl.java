@@ -5,9 +5,12 @@ package com.tajhotels.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tajhotels.model.Restaurant;
+import com.tajhotels.repository.RestaurantRepository;
 
 /**
  * @author Rohit
@@ -16,33 +19,34 @@ import com.tajhotels.model.Restaurant;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
+	@Autowired
+	RestaurantRepository restaurantRepository;
+
 	@Override
 	public void addRestaurant(Restaurant restaurant) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Hello");
+		restaurantRepository.save(restaurant);
 	}
 
 	@Override
 	public void updateRestaurant(Restaurant restaurant) {
-		// TODO Auto-generated method stub
+		restaurantRepository.save(restaurant);
 
 	}
 
 	@Override
 	public Restaurant getRestaurantById(Integer restaurantId) {
-		// TODO Auto-generated method stub
-		return null;
+		return restaurantRepository.findById(restaurantId).get();
 	}
 
 	@Override
 	public void deleteRestaurant(Integer restaurantId) {
-		// TODO Auto-generated method stub
+		restaurantRepository.deleteById(restaurantId);
 
 	}
 
 	@Override
 	public List<Restaurant> getRestaurantByCity(String city) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
