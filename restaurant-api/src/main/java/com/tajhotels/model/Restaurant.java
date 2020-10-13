@@ -33,5 +33,4 @@ public class Restaurant {
 	private Set<Menu> menuList;
 	@ManyToMany
 	private Set<Delivery> delivery;
-
 }
