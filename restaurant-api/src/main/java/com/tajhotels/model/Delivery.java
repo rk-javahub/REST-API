@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author Rohit
@@ -24,6 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Delivery {
 	@Id
 	@GeneratedValue(generator = "delivery_id", strategy = GenerationType.AUTO)
@@ -31,7 +34,7 @@ public class Delivery {
 	private Integer deliveryId;
 	private String partnerName;
 	private Double charges;
-	@ManyToMany(mappedBy = "delivery")
+	@ManyToMany(mappedBy = "delivery",fetch = FetchType.EAGER)
 	Set<Restaurant> restaurantList = new HashSet<Restaurant>();
 
 }

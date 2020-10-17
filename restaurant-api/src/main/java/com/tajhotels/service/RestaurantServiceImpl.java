@@ -17,6 +17,7 @@ import com.tajhotels.repository.RestaurantRepository;
  *
  */
 @Service
+@Transactional
 public class RestaurantServiceImpl implements RestaurantService {
 
 	@Autowired
@@ -47,31 +48,28 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public List<Restaurant> getRestaurantByCity(String city) {
-		return null;
-	}
-
-	@Override
-	public List<Restaurant> getRestaurantByMenu(String menuName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Restaurant> getRestaurantByDelivery(String aprtnerName) {
-		// TODO Auto-generated method stub
-		return null;
+		return restaurantRepository.findByAddressCity(city);
 	}
 
 	@Override
 	public List<Restaurant> getRestaurantByLocation(String location) {
-		// TODO Auto-generated method stub
-		return null;
+		return restaurantRepository.findByAddressStreetName(location);
+	}
+
+	@Override
+	public List<Restaurant> getRestaurantByMenu(String menuName) {
+		return restaurantRepository.getRestaurantByMenu(menuName);
+	}
+
+	@Override
+	public List<Restaurant> getRestaurantByDelivery(String partnerName) {
+		return restaurantRepository.getRestaurantByDelivery(partnerName);
 	}
 
 	@Override
 	public List<Restaurant> getRestaurantByLocationAndMenu(String location, String menuName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return restaurantRepository.getRestaurantByLocationAndMenu(location, menuName);
 	}
 
 }

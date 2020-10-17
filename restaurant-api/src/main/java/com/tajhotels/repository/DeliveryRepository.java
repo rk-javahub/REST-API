@@ -15,5 +15,5 @@ import com.tajhotels.model.Restaurant;
  */
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
-
+	Delivery findByPartnerName(String partnerName);
 }

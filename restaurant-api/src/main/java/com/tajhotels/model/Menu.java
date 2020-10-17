@@ -1,6 +1,5 @@
 package com.tajhotels.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,5 +30,4 @@ public class Menu {
 	@ManyToOne()
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
-
 }
