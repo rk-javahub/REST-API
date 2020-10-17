@@ -25,36 +25,40 @@ public class RestaurantApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		// Setting Address entity
 		Address address = new Address();
 		address.setCity("Mumbai");
 		address.setState("Maharashtra");
 		address.setStreetName("Marine lines road");
 		address.setZipcode(411325);
 
+		//Setting Munu entity
 		Menu menu = new Menu();
 		menu.setMenuName("Chicken Masala");
 		menu.setPrice(250d);
 
 		Menu menu1 = new Menu();
-		menu.setMenuName("Roti");
-		menu.setPrice(15d);
+		menu1.setMenuName("Roti");
+		menu1.setPrice(15d);
 
 		Set<Menu> menuList = new HashSet<Menu>();
 		menuList.add(menu);
 		menuList.add(menu1);
 
+		//Setting Delivery entity
 		Delivery delivery = new Delivery();
 		delivery.setPartnerName("Zomato");
 		delivery.setCharges(50d);
 
 		Delivery delivery1 = new Delivery();
-		delivery.setPartnerName("Swiggi");
-		delivery.setCharges(45d);
+		delivery1.setPartnerName("Swiggi");
+		delivery1.setCharges(45d);
 
 		Set<Delivery> deliveryList = new HashSet<Delivery>();
 		deliveryList.add(delivery);
 		deliveryList.add(delivery1);
 
+		//Setting restaurant entity
 		Restaurant restaurant = new Restaurant();
 		restaurant.setRestaurantName("Taj");
 		restaurant.setAddress(address);

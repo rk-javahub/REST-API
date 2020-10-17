@@ -1,7 +1,7 @@
 package com.tajhotels.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,8 +28,8 @@ public class Menu {
 	private Integer menuId;
 	private String menuName;
 	private Double price;
-	@ManyToOne(fetch = FetchType.EAGER)
-	//@JoinColumn(name = "restaurant_id")
+	@ManyToOne()
+	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 
 }
