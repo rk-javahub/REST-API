@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.tajhotels.model.Restaurant;
 import com.tajhotels.service.DeliveryService;
+import com.tajhotels.service.MenuService;
 import com.tajhotels.service.RestaurantService;
 
 @SpringBootApplication
@@ -18,6 +19,9 @@ public class RestaurantApiApplication implements CommandLineRunner {
 
 	@Autowired
 	DeliveryService deliveryService;
+
+	@Autowired
+	MenuService menuService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestaurantApiApplication.class, args);
@@ -76,10 +80,25 @@ public class RestaurantApiApplication implements CommandLineRunner {
 		 * ->System.out.println(r.getRestaurantName()));
 		 */
 
-		
-		System.out.println("\nRestaurants in Solapur which Provide Lassi");
-		restaurantService.getRestaurantByLocationAndMenu("Hotgi Road", "lassi").stream()
-				.forEach((r) -> System.out.println(r.getRestaurantName() +" "+r.getAddress().getCity()));
+		/*
+		 * System.out.println("\nRestaurants in Solapur which Provide Lassi");
+		 * restaurantService.getRestaurantByLocationAndMenu("Hotgi Road",
+		 * "lassi").stream() .forEach((r) -> System.out.println(r.getRestaurantName()
+		 * +" "+r.getAddress().getCity()));
+		 */
 
+		System.out.println("\nMenu provided by Restaurant");
+
+		// Using Derived Query
+		menuService.getMenuByRestaurant("Kinara Hotel").stream()
+				.forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
+
+		// Using JPQL
+		menuService.getMenuByRestaurantJPQL("Kinara Hotel").stream()
+				.forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
+		
+		// Using SQL
+				menuService.getMenuByRestaurantSQL("Kinara Hotel").stream()
+						.forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
 	}
 }
