@@ -75,8 +75,11 @@ public class RestaurantApiApplication implements CommandLineRunner {
 		 * restaurantService.getRestaurantByDelivery("Uber Eats").stream().forEach((r)
 		 * ->System.out.println(r.getRestaurantName()));
 		 */
+
+		
 		System.out.println("\nRestaurants in Solapur which Provide Lassi");
-		restaurantService.getRestaurantByLocationAndMenu("solapur", "lassi").stream().forEach((r) ->System.out.println(r.getRestaurantName()+r.getAddress().getStreetName()));
+		restaurantService.getRestaurantByLocationAndMenu("Hotgi Road", "lassi").stream()
+				.forEach((r) -> System.out.println(r.getRestaurantName() +" "+r.getAddress().getCity()));
 
 	}
 }
