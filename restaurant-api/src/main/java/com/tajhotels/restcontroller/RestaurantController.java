@@ -44,8 +44,8 @@ public class RestaurantController {
 	}
 
 	@GetMapping("/get-restaurant/{restaurantid}")
-	ResponseEntity<Restaurant> getRestaurantById(@PathVariable int restaurantId) {
-		Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+	ResponseEntity<Restaurant> getRestaurantById(@PathVariable int restaurantid) {
+		Restaurant restaurant = restaurantService.getRestaurantById(restaurantid);
 		return ResponseEntity.ok().header("Description", "One Restaurant instance retrived").body(restaurant);
 	}
 
@@ -79,7 +79,7 @@ public class RestaurantController {
 		return ResponseEntity.ok(restaurants);
 	}
 
-	@GetMapping("/get-restaurantbycityandmenu/cityname/{cityname}/menuname/{menuname}")
+	@GetMapping("/get-restaurantbycityandmenu/location/{location}/menuname/{menuname}")
 	ResponseEntity<List<Restaurant>> getRestaurantByLocationAndMenu(@PathVariable String location,
 			@PathVariable String menuname) {
 		List<Restaurant> restaurants = restaurantService.getRestaurantByLocationAndMenu(location, menuname);

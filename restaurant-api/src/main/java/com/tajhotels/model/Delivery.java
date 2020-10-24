@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +37,7 @@ public class Delivery {
 	private String partnerName;
 	private Double charges;
 	@ManyToMany(mappedBy = "delivery",fetch = FetchType.EAGER)
+	@JsonIgnore
 	Set<Restaurant> restaurantList = new HashSet<Restaurant>();
 
 }

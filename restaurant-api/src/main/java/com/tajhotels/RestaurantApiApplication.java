@@ -87,18 +87,18 @@ public class RestaurantApiApplication implements CommandLineRunner {
 		 * +" "+r.getAddress().getCity()));
 		 */
 
-		System.out.println("\nMenu provided by Restaurant");
-
-		// Using Derived Query
-		menuService.getMenuByRestaurant("Kinara Hotel").stream()
-				.forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
-
-		// Using JPQL
-		menuService.getMenuByRestaurantJPQL("Kinara Hotel").stream()
-				.forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
-		
-		// Using SQL
-				menuService.getMenuByRestaurantSQL("Kinara Hotel").stream()
-						.forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
+		/*
+		 * System.out.println("\nMenu provided by Restaurant");
+		 * 
+		 * // Using Derived Query
+		 * menuService.getMenuByRestaurant("Kinara Hotel").stream() .forEach((r) ->
+		 * System.out.println(r.getMenuName() + " " + r.getPrice()));
+		 * 
+		 * // Using JPQL menuService.getMenuByRestaurantJPQL("Kinara Hotel").stream()
+		 * .forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
+		 * 
+		 * // Using SQL menuService.getMenuByRestaurantSQL("Kinara Hotel").stream()
+		 * .forEach((r) -> System.out.println(r.getMenuName() + " " + r.getPrice()));
+		 */
 	}
 }
