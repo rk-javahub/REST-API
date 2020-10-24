@@ -12,9 +12,9 @@ import com.tajhotels.model.Restaurant;
  *
  */
 public interface RestaurantService {
-	void addRestaurant(Restaurant restaurant);
+	Restaurant addRestaurant(Restaurant restaurant);
 
-	void updateRestaurant(Restaurant restaurant);
+	Restaurant updateRestaurant(Restaurant restaurant);
 
 	Restaurant getRestaurantById(Integer restaurantId);
 

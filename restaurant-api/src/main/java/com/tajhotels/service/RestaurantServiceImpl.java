@@ -24,14 +24,13 @@ public class RestaurantServiceImpl implements RestaurantService {
 	RestaurantRepository restaurantRepository;
 
 	@Override
-	public void addRestaurant(Restaurant restaurant) {
-		System.out.println("Hello");
-		restaurantRepository.save(restaurant);
+	public Restaurant addRestaurant(Restaurant restaurant) {
+		return restaurantRepository.save(restaurant);
 	}
 
 	@Override
-	public void updateRestaurant(Restaurant restaurant) {
-		restaurantRepository.save(restaurant);
+	public Restaurant updateRestaurant(Restaurant restaurant) {
+		return restaurantRepository.save(restaurant);
 
 	}
 
