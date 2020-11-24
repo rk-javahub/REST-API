@@ -85,5 +85,4 @@ public class RestaurantController {
 		List<Restaurant> restaurants = restaurantService.getRestaurantByLocationAndMenu(location, menuname);
 		return ResponseEntity.ok(restaurants);
 	}
-
 }

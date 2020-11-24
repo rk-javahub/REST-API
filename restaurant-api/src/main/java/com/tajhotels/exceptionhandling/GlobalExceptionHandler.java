@@ -81,5 +81,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		ApiError apiError = new ApiError(message, details, HttpStatus.BAD_REQUEST, LocalDateTime.now());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
 	}
-
 }

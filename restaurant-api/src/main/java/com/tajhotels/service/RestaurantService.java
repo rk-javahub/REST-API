@@ -19,7 +19,7 @@ public interface RestaurantService {
 
 	Restaurant getRestaurantById(Integer restaurantId);
 
-	void deleteRestaurant(Integer restaurantId);
+	void deleteRestaurant(int restaurantId);
 
 	List<Restaurant> getRestaurantByCity(String city) throws RestaurantNotFoundException;
 
