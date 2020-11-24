@@ -13,6 +13,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -34,25 +35,51 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	@Override
 	protected ResponseEntity<Object> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		return super.handleHttpMediaTypeNotSupported(ex, headers, status, request);
+		String message = ex.getMessage();
+		List<String> details = new ArrayList<String>();
+		details.add("Media type not supported");
+		ApiError apiError = new ApiError(message, details, status, LocalDateTime.now());
+		return ResponseEntity.status(status).body(apiError);
+
 	}
 
 	@Override
 	protected ResponseEntity<Object> handleMissingPathVariable(MissingPathVariableException ex, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-		return super.handleMissingPathVariable(ex, headers, status, request);
-	}
-
-	@Override
-	protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
-			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		return super.handleMissingServletRequestParameter(ex, headers, status, request);
+		String message = ex.getMessage();
+		List<String> details = new ArrayList<String>();
+		details.add("Path variable is missing");
+		details.add(ex.getMessage());
+		ApiError apiError = new ApiError(message, details, status, LocalDateTime.now());
+		return ResponseEntity.status(status).body(apiError);
 	}
 
 	@Override
 	protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-		return super.handleTypeMismatch(ex, headers, status, request);
+		String message = ex.getMessage();
+		List<String> details = new ArrayList<String>();
+		details.add("Mismatch of type");
+		ApiError apiError = new ApiError(message, details, status, LocalDateTime.now());
+		return ResponseEntity.status(status).body(apiError);
+	}
+
+	@ExceptionHandler(RestaurantNotFoundException.class)
+	protected ResponseEntity<Object> handleRestaurantNotFoundException(RestaurantNotFoundException ex) {
+		String message = ex.getMessage();
+		List<String> details = new ArrayList<String>();
+		details.add("Restaurant Not Found");
+		ApiError apiError = new ApiError(message, details, HttpStatus.BAD_REQUEST, LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
+
+	@ExceptionHandler(RestaurantIdNotFoundException.class)
+	protected ResponseEntity<Object> handleRestaurantIdNotFoundException(RestaurantIdNotFoundException ex) {
+		String message = ex.getMessage();
+		List<String> details = new ArrayList<String>();
+		details.add("Invalid Restaurant Id");
+		ApiError apiError = new ApiError(message, details, HttpStatus.BAD_REQUEST, LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
 	}
 
 }
