@@ -5,6 +5,7 @@ package com.tajhotels.service;
 
 import java.util.List;
 
+import com.tajhotels.exceptionhandling.RestaurantNotFoundException;
 import com.tajhotels.model.Restaurant;
 
 /**
@@ -20,14 +21,14 @@ public interface RestaurantService {
 
 	void deleteRestaurant(Integer restaurantId);
 
-	List<Restaurant> getRestaurantByCity(String city);
+	List<Restaurant> getRestaurantByCity(String city) throws RestaurantNotFoundException;
 
-	List<Restaurant> getRestaurantByMenu(String menuName);
-	
-	List<Restaurant> getRestaurantByDelivery(String aprtnerName);
-	
-	List<Restaurant> getRestaurantByLocation(String location);
-	
-	List<Restaurant> getRestaurantByLocationAndMenu(String location,String menuName);
+	List<Restaurant> getRestaurantByMenu(String menuName) throws RestaurantNotFoundException;
+
+	List<Restaurant> getRestaurantByDelivery(String aprtnerName) throws RestaurantNotFoundException;
+
+	List<Restaurant> getRestaurantByLocation(String location) throws RestaurantNotFoundException;
+
+	List<Restaurant> getRestaurantByLocationAndMenu(String location, String menuName) throws RestaurantNotFoundException;
 
 }

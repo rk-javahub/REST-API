@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.tajhotels.exceptionhandling.CityNotFoundException;
 import com.tajhotels.model.Restaurant;
 import com.tajhotels.service.RestaurantService;
 
