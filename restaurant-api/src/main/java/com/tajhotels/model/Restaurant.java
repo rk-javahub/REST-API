@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,7 @@ public class Restaurant {
 	@GeneratedValue(generator = "restaurant_id", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "restaurant_id", sequenceName = "restaurant_id")
 	private Integer restaurantId;
+	@Size(min = 3)
 	private String restaurantName;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")

@@ -5,6 +5,8 @@ package com.tajhotels.restcontroller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,7 @@ public class RestaurantController {
 	RestaurantService restaurantService;
 
 	@PostMapping("/add-restaurant")
-	ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant) {
+	ResponseEntity<Restaurant> addRestaurant(@RequestBody @Valid Restaurant restaurant) {
 		Restaurant restaurant1 = restaurantService.addRestaurant(restaurant);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Description", "One Restaurant added");
@@ -38,7 +40,7 @@ public class RestaurantController {
 	}
 
 	@PutMapping("/update-restaurant")
-	ResponseEntity<String> updateRestaurant(@RequestBody Restaurant restaurant) {
+	ResponseEntity<String> updateRestaurant(@RequestBody @Valid Restaurant restaurant) {
 		restaurantService.updateRestaurant(restaurant);
 		return ResponseEntity.ok("Restaurant updated");
 	}
