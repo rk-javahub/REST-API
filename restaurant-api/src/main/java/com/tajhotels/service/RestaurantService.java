@@ -21,6 +21,8 @@ public interface RestaurantService {
 
 	void deleteRestaurant(int restaurantId);
 
+	List<Restaurant> getAllRestaurants();
+
 	List<Restaurant> getRestaurantByCity(String city) throws RestaurantNotFoundException;
 
 	List<Restaurant> getRestaurantByMenu(String menuName) throws RestaurantNotFoundException;
@@ -29,6 +31,7 @@ public interface RestaurantService {
 
 	List<Restaurant> getRestaurantByLocation(String location) throws RestaurantNotFoundException;
 
-	List<Restaurant> getRestaurantByLocationAndMenu(String location, String menuName) throws RestaurantNotFoundException;
+	List<Restaurant> getRestaurantByLocationAndMenu(String location, String menuName)
+			throws RestaurantNotFoundException;
 
 }

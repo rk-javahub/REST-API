@@ -8,6 +8,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,10 +47,18 @@ public class RestaurantController {
 		return ResponseEntity.ok("Restaurant updated");
 	}
 
+	@RequestMapping("/getallrestaurant")
+	ResponseEntity<List<Restaurant>> getAllRestaurants() {
+		List<Restaurant> restaurants = restaurantService.getAllRestaurants();
+		return ResponseEntity.ok().header("Description", "All restaurants retrieved").body(restaurants);
+	}
+
 	@GetMapping("/get-restaurant/{restaurantid}")
 	ResponseEntity<Restaurant> getRestaurantById(@PathVariable int restaurantid) {
 		Restaurant restaurant = restaurantService.getRestaurantById(restaurantid);
+		
 		return ResponseEntity.ok().header("Description", "One Restaurant instance retrived").body(restaurant);
+		
 	}
 
 	@DeleteMapping("/delete-restaurant/{restaurantid}")

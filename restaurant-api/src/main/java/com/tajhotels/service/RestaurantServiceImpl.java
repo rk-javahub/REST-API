@@ -94,4 +94,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 		}
 		return restaurants;
 	}
+
+	@Override
+	public List<Restaurant> getAllRestaurants() {
+		return restaurantRepository.findAll();
+	}
 }
