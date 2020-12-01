@@ -8,6 +8,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.LinkBuilder;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpHeaders;
@@ -56,6 +57,7 @@ public class RestaurantController {
 	@GetMapping("/get-restaurant/{restaurantid}")
 	ResponseEntity<Restaurant> getRestaurantById(@PathVariable int restaurantid) {
 		Restaurant restaurant = restaurantService.getRestaurantById(restaurantid);
+		
 		
 		return ResponseEntity.ok().header("Description", "One Restaurant instance retrived").body(restaurant);
 		
